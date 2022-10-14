@@ -1,4 +1,4 @@
-# <Name pending>
+# (Name pending for discussion)
 
 Back-end API framework for colleges.
 
