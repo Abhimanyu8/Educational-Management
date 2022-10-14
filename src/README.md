@@ -4,7 +4,7 @@ Back-end API framework for colleges.
 ### Setup
 1. Clone the repository
 ```bash
-git clone https://github.com/ccfcet/karma
+git clone https://github.com/Abhimanyu8/Educational-Management
 ```
 2. Install node, npm and nodemon globally.
 3. Run
