@@ -1,4 +1,4 @@
-# Karma
+# Karma (Temporary Named for now) 
 Back-end API framework for colleges.
 
 ### Setup
