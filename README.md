@@ -1,20 +1,11 @@
-# (Name pending for discussion)
+# Educational Institution Management System
 
-Back-end API framework for colleges.
+Back-end API framework for colleges, schools and universities in a locality.
 
 
 ## Motivation
 
-There does not exist a free, open and powerful tool for colleges (specifically higher educational institutes) to enhance and improve processes through the effective management of data. The project aims to provide RESTful API services alone.
-
-## Directory Structure
-
-### Design
-Details regarding the design and principles followed is available in [docs/design](/docs/design/)
-folder.
-
-### Source Code
-Source code available in [src](/src/) folder.
+There does not exist a free, open and powerful tool for colleges (specifically higher educational institutes) to enhance and improve processes through the effective management of data. The project aims to provide a proof of concept to tackle this issue.
 
 ## Contributing
 
