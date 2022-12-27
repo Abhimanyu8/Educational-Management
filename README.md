@@ -9,7 +9,7 @@ There does not exist a free, open and powerful tool for colleges (specifically h
 
 ## Design
 
-See [Design and usage](Design_and_Usuage.pdf)
+See [Design and usage (pdf)](Design_and_Usuage.pdf)
 
 Further Details about the project can be found at the SRS document [here](SRS.pdf)
 
