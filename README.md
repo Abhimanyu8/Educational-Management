@@ -7,6 +7,12 @@ Back-end API framework for colleges, schools and universities in a locality.
 
 There does not exist a free, open and powerful tool for colleges (specifically higher educational institutes) to enhance and improve processes through the effective management of data. The project aims to provide a proof of concept to tackle this issue.
 
+## Design
+
+See [Design and usage](Design_and_Usuage.pdf)
+
+Further Details about the project can be found at the SRS document [here](SRS.pdf)
+
 ## Contributing
 
 > Everything is perfect and there is always room for improvement.
