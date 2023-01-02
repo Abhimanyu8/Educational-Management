@@ -1,107 +1,43 @@
-// Load the institutions from the file
-function loadInstitutions() {
-    return fetch('institutions.json')
-      .then(response => response.json());
+const form = document.getElementById("school-form");
+const schoolList = document.getElementById("school-list");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const location = document.getElementById("location").value;
+
+  const school = document.createElement("div");
+  school.classList.add("school");
+  school.innerHTML = `
+    <h3>${name}</h3>
+    <p>${location}</p>
+  `;
+
+  schoolList.appendChild(school);
+
+  form.reset();
+});
+
+schoolList.addEventListener("click", (event) => {
+  if (event.target.tagName === "H3") {
+    event.target.parentElement.classList.toggle("selected");
   }
-  
-  // Save the institutions to the file
-  function saveInstitutions(institutions) {
-    return fetch('institutions.json', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(institutions)
-    });
-  }
-  
-  // Add a new institution
-  function addInstitution(name, location, type, otherInfo) {
-    return loadInstitutions()
-      .then(institutions => {
-        institutions.push({
-          name,
-          location,
-          type,
-          otherInfo
-        });
-        return saveInstitutions(institutions);
-      });
-  }
-  
-  // Get information about an institution
-  function getInstitution(name) {
-    return loadInstitutions()
-      .then(institutions => {
-        return institutions.find(i => i.name === name);
-      });
-  }
-  
-  // Update the information about an institution
-  function updateInstitution(name, newLocation, newType, newOtherInfo) {
-    return loadInstitutions()
-      .then(institutions => {
-        const institution = institutions.find(i => i.name === name);
-        institution.location = newLocation;
-        institution.type = newType;
-        institution.otherInfo = newOtherInfo;
-        return saveInstitutions(institutions);
-      });
-  }
-  
-  // Delete an institution
-  function deleteInstitution(name) {
-    return loadInstitutions()
-      .then(institutions => {
-        const newInstitutions = institutions.filter(i => i.name !== name);
-        return saveInstitutions(newInstitutions);
-      });
-  }
-  
-// Render the list of institutions
-function renderInstitutions() {
-    loadInstitutions()
-      .then(institutions => {
-        const table = document.querySelector('#institutions');
-        table.innerHTML = '';
-        institutions.forEach(institution => {
-          const row = document.createElement('tr');
-          row.innerHTML = `
-            <td>${institution.name}</td>
-            <td>${institution.location}</td>
-            <td>${institution.type}</td>
-            <td>${institution.otherInfo}</td>
-            <td>
-              <button class="update" data-name="${institution.name}">Update</button>
-              <button class="delete" data-name="${institution.name}">Delete</button>
-            </td>
-          `;
-          table.appendChild(row);
-        });
-      });
-  }
-  
-  // Add event listeners
-  document.querySelector('#add-form').addEventListener('submit', event => {
-    event.preventDefault();
-    const name = document.querySelector('#name').value;
-    const location = document.querySelector('#location').value;
-    const type = document.querySelector('#type').value;
-    const otherInfo = document.querySelector('#other_info').value;
-    addInstitution(name, location, type, otherInfo)
-      .then(() => {
-        renderInstitutions();
-        document.querySelector('#name').value = '';
-        document.querySelector('#location').value = '';
-        document.querySelector('#other_info').value = '';
-      });
-  });
-  
-  document.querySelector('#institutions').addEventListener('click', event => {
-    const name = event.target.dataset.name;
-    if (event.target.classList.contains('update')) {
-      // Update the institution
-      const newLocation = prompt('Enter the new location:');
-      const newType = prompt('Enter the new type:');
-      const newOtherInfo = prompt('Enter the new other info:');
-      updateInstitution(name, newLocation, newType, newOtherInfo)
-        .then(() => renderInstitutions());
+});
+
+const filterInput = document.getElementById("filter");
+
+filterInput.addEventListener("input", (event) => {
+  const filterValue = event.target.value.toLowerCase();
+  const schools = document.querySelectorAll(".school");
+
+  schools.forEach((school) => {
+    const name = school.querySelector("h3").textContent.toLowerCase();
+    const location = school.querySelector("p").textContent.toLowerCase();
+    if (name.includes(filterValue) || location.includes(filterValue)) {
+      school.style.display = "block";
+    } else {
+      school.style.display = "none";
     }
+  });
+});
